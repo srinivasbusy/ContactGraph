@@ -1,0 +1,51 @@
+## Python / Backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+pip-wheel-metadata/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.log
+backend/.env
+
+## Android / Kotlin
+*.iml
+.gradle/
+local.properties
+.idea/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.ap_
+*.apk
+*.aab
+*.class
+*.dex
+*.jks
+*.keystore
+# Real google-services.json must NOT be committed
+android/app/google-services.json
+
+## Gradle
+gradle/wrapper/gradle-wrapper.jar
+gradlew
+gradlew.bat
+
+## OS
+.DS_Store
+Thumbs.db

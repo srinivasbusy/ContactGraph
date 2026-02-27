@@ -28,7 +28,7 @@ def get_db() -> Generator[Neo4jService, None, None]:
     if _neo4j_service is None:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-            detail="Database not initialised.",
+            detail="Database not initialized.",
         )
     yield _neo4j_service
 

@@ -158,11 +158,15 @@ class Neo4jService:
         """Return shortest path info or None if no path exists."""
         from_phone = normalize_phone(from_phone)
         to_phone = normalize_phone(to_phone)
+        # Clamp depth to a safe range; Neo4j does not support parameterized
+        # relationship-depth bounds in pattern syntax, so we interpolate an
+        # integer literal after validation.
+        safe_depth = max(1, min(int(max_depth), 10))
         with self._driver.session() as session:
             result = session.run(
                 f"""
                 MATCH path = shortestPath(
-                    (a:User {{phone: $from_phone}})-[:KNOWS*1..{max_depth}]-(b:User {{phone: $to_phone}})
+                    (a:User {{phone: $from_phone}})-[:KNOWS*1..{safe_depth}]-(b:User {{phone: $to_phone}})
                 )
                 RETURN path, length(path) AS degree
                 """,
